@@ -11,9 +11,9 @@ const historyJob = {
   process: [
     [
       {
-        'params': [
-          ['ccxt/grabHistory'],
-          ['save'],
+        'ccxt/exchangeSymbols': [
+          ['ccxt/grabOHLCV'],
+          ['storage/saveOHLCVtoLowDB'],
         ],
       },
     ],
@@ -24,10 +24,10 @@ const websocketJob = {
   process: [
     [
       {
-        'params': [
+        'ccxt/exchangeSymbols': [
           [
             {
-              'websocket/binance': [['save']],
+              'websocket/binanceOHLCV': [['storage/saveOHLCVtoLowDB']],
             },
           ],
         ],
@@ -35,17 +35,6 @@ const websocketJob = {
     ],
   ],
 }
-
-// Program is an event emitter
-// 'sent' event is emitted when a message is sent between components.
-// It can be used for simple tracing, as in here, or advanced instrumentations.
-// p.on('sent', (timestamp, source, target, batchSize) => {
-//   console.log(
-//       `${new Date(
-//           timestamp
-//       ).toLocaleTimeString()} Sent: ${source} --> ${target} (${batchSize})`
-//   );
-// });
 
 module.exports = {
   program: p,
