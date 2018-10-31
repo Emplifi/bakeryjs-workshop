@@ -1,0 +1,21 @@
+{{#extend "head"}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highcharts/6.2.0/css/highcharts.css">
+<script src="/javascripts/ohlc.mjs" type="module"></script>
+{{/extend}}
+
+<h1>{{title}}</h1>
+<label>
+  Select data:
+  <select id="file-select">
+    {{#each files}}
+    <option value="{{this}}">{{this}}</option>
+    {{else}}
+    <option>No files :(</option>
+    {{/each}}
+
+  </select>
+
+</label>
+<div id="chart">
+</div>
+
